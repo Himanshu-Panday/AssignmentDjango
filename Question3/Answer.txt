@@ -1,0 +1,19 @@
+By default, Django signals do not necessarily run in the same database transaction as the caller. The execution of signals depends on when they are triggered:
+
+1.Pre-save (pre_save) and Post-save (post_save) Signals
+
+ - pre_save runs before the database transaction is committed.
+ - post_save runs after the model instance is saved but before the transaction is committed.
+
+2.Post-commit (on_commit) Signals
+
+ - Signals inside on_commit execute only after the transaction is successfully committed.
+
+
+
+Explanation:
+
+1.The User.objects.create() triggers the post_save signal.
+2.The signal runs before the transaction is committed.
+3.Even though the transaction is rolled back, the signal executes and prints that the user exists in the database at the time of execution.
+4.This proves that Django signals do not automatically wait for the transaction to be committed.

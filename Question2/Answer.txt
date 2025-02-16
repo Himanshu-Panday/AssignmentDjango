@@ -1,0 +1,8 @@
+Yes, Django signals run in the same thread as the caller by default. This means the signal receiver function executes synchronously within the same thread as the function that triggered the signal.
+
+
+Explanation:
+
+1.Before saving the user, we print the current thread name (it should be MainThread).
+2.Inside the signal receiver, we again print the current thread name.
+3.Since both messages show the same thread (MainThread), this confirms that Django signals execute synchronously in the same thread as the caller.

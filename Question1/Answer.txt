@@ -1,0 +1,8 @@
+Django signals are executed synchronously by default. This means that when a signal is triggered, the connected receiver functions execute immediately in the same thread as the signal sender.
+
+
+Explanation:
+
+1.The message "User save method completed." appears after the signal processing is done.
+2.This proves that the signal execution is 'blocking' (i.e., synchronous).
+3.If signals were asynchronous by default, "User save method completed." would appear immediately after "Saving user...", without waiting for the signal to complete.

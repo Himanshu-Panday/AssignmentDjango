@@ -1,0 +1,5 @@
+Explanation:
+
+1.Initialization (__init__ method): The class requires length and width to be provided during object creation.
+2.Iteration (__iter__ method): Defines a generator that yields a dictionary with the length first, followed by the width.
+3.Example Usage: When iterated over, the instance returns {'length': VALUE} first and then {'width': VALUE}.
